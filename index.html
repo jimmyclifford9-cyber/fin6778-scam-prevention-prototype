@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FIN 6778 academic prototype demonstrating AI-assisted scam prevention for bank transfers.">
-  <title>AI Scam Prevention Prototype | FIN 6778</title>
+  <meta name="description" content="Interactive FIN 6778 prototype demonstrating explainable, AI-assisted scam prevention for bank transfers.">
+  <title>Scam Prevention AI | FIN 6778 Prototype</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,146 +14,147 @@
   <header class="topbar">
     <a class="brand" href="#top" aria-label="Prototype home">
       <span class="brand-mark" aria-hidden="true">S</span>
-      <span>
-        <strong>Scam Prevention AI</strong>
-        <small>FIN 6778 Prototype</small>
-      </span>
+      <span><strong>Scam Prevention AI</strong><small>FIN 6778 Prototype</small></span>
     </a>
+    <nav class="view-switcher" aria-label="Prototype view">
+      <button class="view-button active" data-view="customer">Customer view</button>
+      <button class="view-button" data-view="analyst">Fraud analyst</button>
+    </nav>
     <div class="prototype-label">Synthetic demonstration</div>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">AI-assisted transfer protection</p>
-        <h1>Stop the scam <span>before money leaves.</span></h1>
-        <p class="hero-copy">A bank-facing risk engine and conversational assistant work together to identify suspicious payments, pause likely scams, and route high-risk cases to a trained employee.</p>
-        <div class="hero-actions">
-          <button class="button primary" id="start-demo">Start guided demo</button>
-          <a class="button secondary" href="#how-it-works">How it works</a>
-        </div>
-      </div>
-      <div class="hero-card" aria-label="Illustrative transfer risk summary">
-        <div class="card-heading">
-          <span>Transfer risk</span>
-          <span class="status high">High risk</span>
-        </div>
-        <div class="score-ring" style="--score:87">
-          <strong>87</strong>
-          <span>out of 100</span>
-        </div>
-        <p>Unusual transfer pattern detected</p>
-        <ul class="signal-list compact">
-          <li>New recipient</li>
-          <li>Unusually large amount</li>
-          <li>Potential social-engineering indicators</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="demo-section" id="demo" aria-labelledby="demo-title">
-      <div class="section-heading">
+    <div id="customer-view">
+      <section class="hero">
         <div>
-          <p class="eyebrow">Interactive prototype</p>
-          <h2 id="demo-title">Suspicious transfer review</h2>
+          <p class="eyebrow">AI-assisted transfer protection</p>
+          <h1>Stop the scam <span>before money leaves.</span></h1>
+          <p class="hero-copy">Explore how transaction signals, customer context, and human review can work together to interrupt authorized-push-payment scams.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#builder">Build a transaction</a>
+            <button class="button secondary" id="load-guided-demo">Load high-risk demo</button>
+          </div>
         </div>
-        <button class="text-button" id="reset-demo">Reset scenario</button>
-      </div>
-
-      <div class="demo-grid">
-        <article class="panel transaction-panel">
-          <div class="panel-title">
-            <div>
-              <span class="muted">Transfer request</span>
-              <h3>$4,800.00</h3>
-            </div>
-            <span class="status pending" id="transfer-status">Awaiting review</span>
-          </div>
-
-          <dl class="transaction-details">
-            <div><dt>From</dt><dd>Checking ••4821</dd></div>
-            <div><dt>Recipient</dt><dd>Michael R. <span class="new-tag">New</span></dd></div>
-            <div><dt>Method</dt><dd>External bank transfer</dd></div>
-            <div><dt>Requested</dt><dd>Today, 8:42 PM</dd></div>
-          </dl>
-
-          <div class="risk-box">
-            <div>
-              <span class="muted">AI risk score</span>
-              <strong id="risk-score">87/100</strong>
-            </div>
-            <div class="risk-meter" aria-label="Risk score 87 out of 100"><span></span></div>
-          </div>
-
-          <h4>Detected risk signals</h4>
-          <ul class="signal-list">
-            <li><span>Recipient</span> First payment to this account</li>
-            <li><span>Amount</span> 4.3× larger than typical transfers</li>
-            <li><span>Timing</span> Outside the customer’s usual activity</li>
+        <div class="hero-card" aria-label="Prototype capabilities">
+          <p class="mini-label">What this version demonstrates</p>
+          <h2>Inputs now change the decision.</h2>
+          <ul class="capability-list">
+            <li>Editable transaction details</li>
+            <li>Transparent risk calculations</li>
+            <li>Low, medium, and high-risk outcomes</li>
+            <li>Customer safety interview</li>
+            <li>Human fraud-review workflow</li>
           </ul>
-        </article>
-
-        <article class="panel assistant-panel" aria-live="polite">
-          <div class="assistant-header">
-            <div class="assistant-avatar" aria-hidden="true">AI</div>
-            <div>
-              <h3>Transfer Safety Assistant</h3>
-              <span><i></i> Ready to review</span>
-            </div>
-          </div>
-
-          <div class="chat" id="chat-log">
-            <div class="message ai-message">
-              <p>This transfer differs from your usual activity. I’ll ask a few quick questions before it is sent.</p>
-            </div>
-          </div>
-
-          <div class="response-area" id="response-area">
-            <p id="question">Did someone contact you unexpectedly and instruct you to send this money?</p>
-            <div class="choice-grid" id="choices">
-              <button data-answer="yes">Yes</button>
-              <button data-answer="no">No</button>
-            </div>
-          </div>
-
-          <div class="outcome" id="outcome" hidden>
-            <div class="outcome-icon" aria-hidden="true">!</div>
-            <div>
-              <h4>Transfer temporarily paused</h4>
-              <p>The responses and transaction signals indicate a high likelihood of an authorized-push-payment scam. A fraud specialist has been notified for human review.</p>
-            </div>
-            <div class="case-number">Case #SF-20481 • Estimated review: under 10 minutes</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="process-section" id="how-it-works" aria-labelledby="process-title">
-      <div class="section-heading centered">
-        <div>
-          <p class="eyebrow">System workflow</p>
-          <h2 id="process-title">Technology supports—not replaces—human judgment</h2>
         </div>
-      </div>
-      <div class="process-grid">
-        <article><span>1</span><h3>Detect</h3><p>Transaction data is compared with the customer’s normal payment patterns.</p></article>
-        <article><span>2</span><h3>Confirm</h3><p>A conversational assistant asks context-sensitive questions in plain language.</p></article>
-        <article><span>3</span><h3>Pause</h3><p>High-risk transfers are delayed before funds become difficult to recover.</p></article>
-        <article><span>4</span><h3>Escalate</h3><p>A bank employee reviews the evidence and contacts the customer when necessary.</p></article>
-      </div>
-    </section>
+      </section>
 
-    <section class="disclosure">
-      <strong>Academic prototype disclosure</strong>
-      <p>This website uses synthetic data and simulated AI outputs. It does not connect to a bank, process payments, provide financial advice, or make real fraud decisions.</p>
-    </section>
+      <section class="builder-section" id="builder" aria-labelledby="builder-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">Interactive transaction lab</p>
+            <h2 id="builder-title">Test the risk engine</h2>
+            <p>Change the transaction details or load a preset. The prototype will explain every point added to the score.</p>
+          </div>
+          <div class="preset-group" aria-label="Scenario presets">
+            <button class="preset active" data-preset="scam">Likely scam</button>
+            <button class="preset" data-preset="review">Needs review</button>
+            <button class="preset" data-preset="safe">Normal payment</button>
+          </div>
+        </div>
+
+        <div class="builder-grid">
+          <form class="panel transaction-form" id="transaction-form">
+            <div class="panel-kicker">Customer transaction</div>
+            <div class="form-grid">
+              <label>Transfer amount<span class="money-input"><span>$</span><input id="amount" name="amount" type="number" min="1" max="100000" step="1" value="4800" required></span></label>
+              <label>Typical transfer amount<span class="money-input"><span>$</span><input id="average" name="average" type="number" min="1" max="100000" step="1" value="1100" required></span></label>
+              <label>Recipient name<input id="recipient" name="recipient" type="text" maxlength="40" value="Michael R." required></label>
+              <label>Recipient history<select id="recipient-history" name="recipientHistory"><option value="new" selected>First-time recipient</option><option value="recent">Paid once before</option><option value="established">Established recipient</option></select></label>
+              <label>Payment method<select id="method" name="method"><option value="external" selected>External bank transfer</option><option value="wire">Wire transfer</option><option value="p2p">Peer-to-peer payment</option><option value="internal">Internal account transfer</option></select></label>
+              <label>Request time<select id="timing" name="timing"><option value="unusual" selected>Unusual time for customer</option><option value="normal">Normal activity window</option></select></label>
+            </div>
+            <button class="button primary full" type="submit">Analyze transaction</button>
+            <p class="form-note">No information leaves this page. All entries are temporary and synthetic.</p>
+          </form>
+
+          <article class="panel analysis-panel" aria-live="polite">
+            <div class="analysis-topline">
+              <div><span class="muted">Calculated transaction risk</span><div><strong class="live-score" id="risk-score">62</strong><span>/100</span></div></div>
+              <span class="status review" id="risk-status">Verification required</span>
+            </div>
+            <div class="risk-meter" aria-label="Calculated risk score"><span id="risk-bar"></span></div>
+            <div class="decision-card review" id="decision-card"><span class="decision-icon" aria-hidden="true">?</span><div><h3 id="decision-title">Additional verification required</h3><p id="decision-copy">The transfer should not be released until the customer provides more context.</p></div></div>
+            <div class="factor-heading"><h3>Why this score?</h3><span id="factor-total">4 signals</span></div>
+            <ul class="factor-list" id="factor-list"></ul>
+            <button class="button dark full" id="start-verification" type="button">Start customer safety check</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="verification-section" id="verification" aria-labelledby="verification-title" hidden>
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow dark">Customer context</p><h2 id="verification-title">Conversational safety check</h2></div>
+          <button class="text-button" id="reset-verification">Restart interview</button>
+        </div>
+        <div class="verification-grid">
+          <article class="panel chat-panel">
+            <div class="assistant-header"><div class="assistant-avatar" aria-hidden="true">AI</div><div><h3>Transfer Safety Assistant</h3><span><i></i> Simulated conversation</span></div></div>
+            <div class="chat" id="chat-log"></div>
+            <div class="response-area" id="response-area"><p id="question"></p><div class="choice-grid" id="choices"></div></div>
+          </article>
+          <aside class="panel live-review-panel">
+            <span class="muted">Live combined score</span>
+            <div class="score-display"><strong id="combined-score">62</strong><span>/100</span></div>
+            <div class="risk-meter large"><span id="combined-bar"></span></div>
+            <h3>Customer-context signals</h3>
+            <ul class="factor-list" id="context-factors"><li class="neutral-factor">Answer the questions to update the analysis.</li></ul>
+            <div class="final-outcome" id="final-outcome" hidden>
+              <span class="status high" id="final-status">Transfer paused</span><h3 id="final-title">High likelihood of a scam</h3><p id="final-copy">The case has been added to the fraud-review queue.</p>
+              <button class="button dark full" type="button" data-open-analyst>Open fraud-analyst case</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="process-section" id="how-it-works" aria-labelledby="process-title">
+        <div class="section-heading centered"><div><p class="eyebrow dark">System workflow</p><h2 id="process-title">Technology supports—not replaces—human judgment</h2></div></div>
+        <div class="process-grid">
+          <article><span>1</span><h3>Detect</h3><p>Compare the transfer with the customer’s normal transaction patterns.</p></article>
+          <article><span>2</span><h3>Confirm</h3><p>Ask focused questions about contact, relationships, secrecy, and pressure.</p></article>
+          <article><span>3</span><h3>Decide</h3><p>Approve, verify, or pause based on the combined explainable score.</p></article>
+          <article><span>4</span><h3>Escalate</h3><p>Give a bank employee the signals and responses needed for human review.</p></article>
+        </div>
+      </section>
+    </div>
+
+    <div id="analyst-view" hidden>
+      <section class="analyst-hero">
+        <div><p class="eyebrow">Bank operations prototype</p><h1>Fraud Review Center</h1><p>Review synthetic cases prioritized by risk, see the reasons behind each score, and record a human decision.</p></div>
+        <div class="analyst-summary"><article><span>Open cases</span><strong>3</strong></article><article><span>High risk</span><strong>1</strong></article><article><span>Paused value</span><strong id="paused-value">$4,800</strong></article></div>
+      </section>
+
+      <section class="analyst-workspace">
+        <div class="case-queue panel">
+          <div class="queue-heading"><div><span class="panel-kicker">Prioritized queue</span><h2>Cases</h2></div><span class="queue-count">3 open</span></div>
+          <button class="case-row active" data-case="current"><span class="case-risk high-dot"></span><span><strong id="queue-recipient">Michael R.</strong><small id="queue-method">External transfer • $4,800</small></span><b id="queue-score">87</b></button>
+          <button class="case-row" data-case="invoice"><span class="case-risk medium-dot"></span><span><strong>Northstar Supply</strong><small>Wire transfer • $2,850</small></span><b>54</b></button>
+          <button class="case-row" data-case="rent"><span class="case-risk low-dot"></span><span><strong>Lakeview Apartments</strong><small>Internal transfer • $1,200</small></span><b>18</b></button>
+        </div>
+
+        <article class="case-detail panel">
+          <div class="case-detail-head"><div><span class="panel-kicker">Case #SF-20481</span><h2 id="case-recipient">Michael R.</h2><p id="case-summary">External bank transfer • $4,800 • First-time recipient</p></div><div class="case-score"><strong id="case-score">87</strong><span>/100 risk</span></div></div>
+          <div class="detail-grid"><section><h3>Transaction signals</h3><ul class="factor-list" id="analyst-transaction-factors"></ul></section><section><h3>Customer responses</h3><ul class="factor-list" id="analyst-context-factors"><li class="neutral-factor">Customer interview not completed.</li></ul></section></div>
+          <section class="audit-section"><h3>Decision log</h3><ol class="audit-log" id="audit-log"><li><span>8:42 PM</span> Transfer submitted and automatically scored.</li><li><span>8:42 PM</span> Case added to the verification queue.</li></ol></section>
+          <div class="analyst-actions" id="analyst-actions"><button class="button approve" data-action="approve">Approve transfer</button><button class="button contact" data-action="contact">Contact customer</button><button class="button danger" data-action="escalate">Block and escalate</button></div>
+          <div class="analyst-decision" id="analyst-decision" hidden></div>
+        </article>
+      </section>
+    </div>
+
+    <section class="disclosure"><strong>Academic prototype disclosure</strong><p>The interface, customers, transactions, scores, and outcomes are synthetic. The scoring logic is a transparent rules-based simulation—not a trained production AI model. This website does not connect to a bank or process payments.</p></section>
   </main>
 
-  <footer>
-    <p>FIN 6778 Foundations of FinTech • University of Central Florida • Fall 2026</p>
-    <p>James Clifford • Cody Gilstrap • Aden Brady</p>
-  </footer>
-
+  <footer><p>FIN 6778 Foundations of FinTech • University of Central Florida • Fall 2026</p><p>James Clifford • Cody Gilstrap • Aden Brady</p></footer>
   <script src="app.js"></script>
 </body>
 </html>
