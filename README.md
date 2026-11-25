@@ -6,17 +6,18 @@ An interactive academic prototype for the University of Central Florida course F
 
 The proposed platform helps banks and credit unions reduce authorized-push-payment scams. It combines transaction-pattern analysis with a conversational AI safety check. A suspicious transfer can be paused and escalated to a trained employee before funds become difficult to recover.
 
-## Demonstrated scenario
+## Working prototype features
 
-- A customer attempts to send $4,800 to a new recipient.
-- The simulated system assigns a risk score of 87/100.
-- The customer answers context-sensitive safety questions.
-- The transfer is temporarily paused.
-- A synthetic case is escalated for human review.
+- Editable transfer amount, typical transaction amount, recipient, payment method, and timing.
+- Three scenario presets for low-, medium-, and high-risk transactions.
+- Transparent rules-based scoring with a point-by-point explanation.
+- Low-risk approval, medium-risk verification, and high-risk hold outcomes.
+- A conversational customer safety check that changes the score based on the answers.
+- A fraud-analyst dashboard with a prioritized case queue, transaction signals, customer responses, an audit log, and working analyst decisions.
 
 ## Important limitations
 
-This project uses synthetic data and simulated AI outputs. It does not connect to a bank, process payments, provide financial advice, or make real fraud decisions. The prototype demonstrates a user experience and proposed workflow, not a production fraud model.
+This project uses synthetic data and simulated AI outputs. The risk engine is a transparent rules-based demonstration, not a trained production model. It does not connect to a bank, process payments, provide financial advice, or make real fraud decisions. The prototype demonstrates a user experience and proposed workflow.
 
 ## Run locally
 
